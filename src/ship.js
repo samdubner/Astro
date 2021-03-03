@@ -85,6 +85,12 @@ class Ship extends Entity {
     this.updateUi();
     if (Math.abs(this.vel[0]) - 0.1 < 0.1) this.vel[0] = 0;
     if (Math.abs(this.vel[1]) - 0.1 < 0.1) this.vel[1] = 0;
+    this.pos[0] = this.pos[0] % window.innerWidth;
+    this.pos[1] = this.pos[1] % window.innerHeight;
+        if (this.pos[0] < 0)
+          this.pos[0] = window.innerWidth;
+        if (this.pos[1] < 0)
+          this.pos[1] += window.innerHeight;
 
     if (this.vel[0] > 0) {
       this.vel[0] -= 0.1;
@@ -98,17 +104,17 @@ class Ship extends Entity {
       this.vel[1] += 0.1;
     }
 
-    this.pos[0] += this.vel[0];
-    this.pos[1] += this.vel[1];
+    this.pos[0] += this.vel[0]
+    this.pos[1] += this.vel[1]
 
     this.ctx.save();
-    this.ctx.translate(this.pos[0] + 10, this.pos[1] + 10);
-    this.ctx.rotate((Math.PI / 180) * this.rotation);
     this.ctx.beginPath();
-    this.ctx.moveTo(25, 0);
-    this.ctx.lineTo(50, 50);
-    this.ctx.lineTo(75, 0);
-    this.ctx.fillStyle = "blue";
+    this.ctx.translate(this.pos[0], this.pos[1]);
+    this.ctx.rotate((Math.PI / 180) * (this.rotation - 90) );
+    this.ctx.moveTo(-25, 0);
+    this.ctx.lineTo(0, 50);
+    this.ctx.lineTo(25, 0);
+    this.ctx.fillStyle = "white";
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.restore();

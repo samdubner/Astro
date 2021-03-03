@@ -7,11 +7,11 @@ class GameView {
     }
 
     start() {
-        setInterval(() => {
+        let pause = setInterval(() => {
             this.ctx.canvas.width = window.innerWidth;
             this.ctx.canvas.height = window.innerHeight;
             this.game.draw();
-        }, 20)
+        }, 10)
     }
 }
 
