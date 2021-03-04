@@ -3,11 +3,17 @@ import Entity from "./entity"
 class Enemy extends Entity {
     constructor(ctx, ship) {
         super(ctx)
-        this.pos = [500, 500]
+        this.randomPos();
         this.vel = [0, 0]
         this.ship = ship;
-        this.moveSpeed = 5;
+        this.moveSpeed = 4;
         this.rotation = 0;
+    }
+
+    randomPos() {
+        let y = Math.floor(Math.random() * window.innerHeight)
+        let x = Math.random() < 0.5 ? -25 : window.innerWidth + 25
+        this.pos = [x, y]
     }
 
     move(delta) {
