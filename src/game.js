@@ -1,18 +1,30 @@
 import Asteroid from "./asteroid.js";
 import Ship from "./ship.js";
+import Enemy from "./enemy.js";
 
 class Game {
   constructor(DIM_X, DIM_Y, ctx, view) {
-    this.asteroids = [];
     this.ctx = ctx;
     this.ship = new Ship(ctx);
+
+    this.asteroids = [];
+    this.enemies = [];
+
+    this.wave = 1;
+    this.enemyCount = 1;
+    this.spawnEnemies = true;
+    
     this.DIM_X = DIM_X;
     this.DIM_Y = DIM_Y;
     this.view = view;
+
+    setInterval(() => {
+        this.enemies.push()
+    }, 5000)
   }
 
   allObjects() {
-    return [this.ship, ...this.asteroids];
+    return [this.ship, ...this.asteroids, ...this.enemies];
   }
 
   spawnAsteroid() {

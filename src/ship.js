@@ -11,7 +11,7 @@ class Ship extends Entity {
 
     this.lasers = [];
 
-    this.pos = [window.innerWidth / 2, window.innerHeight / 2git ];
+    this.pos = [window.innerWidth / 2, window.innerHeight / 2 ];
     this.rotation = 0;
 
     this.keypresses = {
