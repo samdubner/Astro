@@ -12,7 +12,7 @@ class Game {
 
     this.wave = {
       count: 1,
-      enemiesLeft: 1,
+      enemiesLeft: 0,
       spawnedEnemies: 0,
       size: 1,
       ongoing: true,
@@ -35,7 +35,7 @@ class Game {
 
   spawnEnemies() {
     setInterval(() => {
-      if (this.wave.ongoing && this.wave.spawnedEnemies < this.wave.size) {
+      if (this.wave.spawnedEnemies < this.wave.size) {
         this.enemies.push(new Enemy(this.ctx, this.ship));
         this.wave.spawnedEnemies++;
       }
@@ -63,6 +63,7 @@ class Game {
 
         if (distance < 30) {
           this.enemies.splice(i, 1);
+          this.wave.enemiesLeft--;
         }
       });
     });
