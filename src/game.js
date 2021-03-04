@@ -32,6 +32,19 @@ class Game {
             }
           })
       })
+
+      this.asteroids.forEach((asteroid, i) => {
+          let distance = Math.sqrt(
+            (this.ship.pos[0] - asteroid.pos[0]) ** 2 +
+            (this.ship.pos[1] - asteroid.pos[1]) ** 2
+          );
+
+          if (distance < 50) {
+              this.ship.health--
+              this.asteroids.splice(i, 1)
+              console.log(this.ship.health);
+          }
+      })
   }
 
   draw(delta) {
