@@ -135,6 +135,7 @@ class Ship extends Entity {
     this.ctx.moveTo(-25, 0);
     this.ctx.lineTo(0, 50);
     this.ctx.lineTo(25, 0);
+    this.ctx.lineTo(0, 11);
     this.ctx.fillStyle = "white";
     this.ctx.fill();
     this.ctx.closePath();
