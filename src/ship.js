@@ -1,10 +1,13 @@
 import Entity from "./entity";
+import Laser from "./laser"
 
 class Ship extends Entity {
   constructor(ctx) {
     super(ctx);
     this.moveSpeed = 1;
     this.rotationSpeed = 2.5;
+
+    this.lasers = []
 
     this.pos = [500, 500];
     this.rotation = 0;
@@ -21,7 +24,7 @@ class Ship extends Entity {
 
     document.addEventListener("keydown", (e) => {
       if (e.key in this.keypresses) this.keypresses[e.key].pressed = true;
-      if (e.key === " ") console.log("shoot");
+      if (e.key === " ") this.spawnLaser();
     });
 
     document.addEventListener("keyup", (e) => {
@@ -55,6 +58,10 @@ class Ship extends Entity {
       case "left":
         this.rotation -= this.rotationSpeed;
     }
+  }
+
+  spawnLaser() {
+    this.lasers.push(new Laser(this.ctx, this))
   }
 
   updateUi() {
@@ -107,14 +114,21 @@ class Ship extends Entity {
     //update position
     this.pos[0] += this.vel[0] * delta / 10;
     this.pos[1] += this.vel[1] * delta / 10;
+
+    this.lasers.forEach((laser) => {
+        laser.move(delta);
+    });
   }
 
   draw() {
+    //draw lasers
+    this.lasers.forEach((laser) => laser.draw());
+
     //draw ship
     this.ctx.save();
     this.ctx.beginPath();
     this.ctx.translate(this.pos[0], this.pos[1]);
-    this.ctx.rotate((Math.PI / 180) * (this.rotation - 90));
+    this.ctx.rotate((Math.PI / 180) * (this.rotation - 90))
     this.ctx.moveTo(-25, 0);
     this.ctx.lineTo(0, 50);
     this.ctx.lineTo(25, 0);
