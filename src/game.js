@@ -2,20 +2,17 @@ import Asteroid from "./asteroid.js";
 import Ship from "./ship.js";
 
 class Game {
-  constructor(DIM_X, DIM_Y, ctx) {
+  constructor(DIM_X, DIM_Y, ctx, view) {
     this.asteroids = [];
     this.ctx = ctx;
     this.ship = new Ship(ctx);
     this.DIM_X = DIM_X;
     this.DIM_Y = DIM_Y;
+    this.view = view;
   }
 
   allObjects() {
     return [this.ship, ...this.asteroids];
-  }
-
-  centerPosition() {
-    return [this.DIM_X / 2, this.DIM_Y / 2];
   }
 
   spawnAsteroid() {
@@ -41,18 +38,18 @@ class Game {
 
           if (distance < 50) {
               this.ship.health--
-              this.asteroids.splice(i, 1)
-              console.log(this.ship.health);
+              this.asteroids.splice(i, 1);
           }
       })
   }
 
   draw(delta) {
+    if(this.ship.health <= 0) this.view.gameOver = true;
+    this.checkCollisions()
+    if (this.asteroids.length < 10) this.spawnAsteroid();
     this.allObjects().forEach((obj, idx) => {
       obj.move(delta);
-      this.checkCollisions()
       obj.draw();
-      if (this.asteroids.length < 10) this.spawnAsteroid();
       if (obj.isOutOfBounds()) {
         this.asteroids.splice(idx - 1, 1);
       }
