@@ -2,16 +2,20 @@ import Asteroid from "./asteroid.js"
 import Ship from "./ship.js"
 
 class Game {
-    constructor(DIM_X, DIM_Y) {
+    constructor(DIM_X, DIM_Y, ctx) {
         this.asteroids = []
+        this.ctx = ctx;
+        this.ship = new Ship(ctx);
         this.DIM_X = DIM_X;
         this.DIM_Y = DIM_Y;
+    }
 
-        // setInterval(() => this.spawnAsteroid(), 1000)
+    allObjects() {
+        return [this.ship, ...this.asteroids]
     }
 
     spawnAsteroid() {
-        console.log(this)
+        this.asteroids.push(new Asteroid(this.ctx))
     }
 
     centerPosition() {
@@ -25,7 +29,9 @@ class Game {
     }
 
     draw() {
-        // console.log("draw")
+        for (let entity of this.allObjects()) {
+            entity.draw();
+        }
     }
 }
 
