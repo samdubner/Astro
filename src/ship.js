@@ -4,21 +4,24 @@ class Ship extends Entity {
   constructor(ctx) {
     super(ctx);
     this.moveSpeed = 1;
-    this.rotationSpeed = 2;
+    this.rotationSpeed = 2.5;
 
     this.pos = [500, 500];
     this.rotation = 0;
 
     this.keypresses = {
       ArrowUp: { pressed: false, func: () => this.updateVelocity("forward") },
-      ArrowDown: { pressed: false, func: () => this.updateVelocity("backward") },
+      ArrowDown: {
+        pressed: false,
+        func: () => this.updateVelocity("backward"),
+      },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
-      ArrowLeft: { pressed: false, func: () => this.updateRotation("left") }
+      ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
     };
 
     document.addEventListener("keydown", (e) => {
       if (e.key in this.keypresses) this.keypresses[e.key].pressed = true;
-      if (e.key === " ") console.log("shoot")
+      if (e.key === " ") console.log("shoot");
     });
 
     document.addEventListener("keyup", (e) => {
@@ -27,7 +30,7 @@ class Ship extends Entity {
   }
 
   updateVelocity(direction) {
-    if (Math.sqrt((this.vel[0] ** 2) + (this.vel[1] ** 2)) > 8) return;
+    if (Math.sqrt(this.vel[0] ** 2 + this.vel[1] ** 2) > 8) return;
     switch (direction) {
       case "forward":
         this.vel[0] +=
@@ -70,12 +73,12 @@ class Ship extends Entity {
   }
 
   executeKeydowns() {
-      for (let key in this.keypresses) {
-          if (this.keypresses[key].pressed) this.keypresses[key].func();
-      }
+    for (let key in this.keypresses) {
+      if (this.keypresses[key].pressed) this.keypresses[key].func();
+    }
   }
 
-  draw() {
+  move(delta=1) {
     this.executeKeydowns();
     this.updateUi();
     //wrap spaceship
@@ -95,7 +98,6 @@ class Ship extends Entity {
       this.vel[0] += 0.1;
     }
 
-    //space drag pt.2
     if (this.vel[1] > 0) {
       this.vel[1] -= 0.1;
     } else if (this.vel[1] < 0) {
@@ -103,9 +105,11 @@ class Ship extends Entity {
     }
 
     //update position
-    this.pos[0] += this.vel[0];
-    this.pos[1] += this.vel[1];
+    this.pos[0] += this.vel[0] * delta / 10;
+    this.pos[1] += this.vel[1] * delta / 10;
+  }
 
+  draw() {
     //draw ship
     this.ctx.save();
     this.ctx.beginPath();

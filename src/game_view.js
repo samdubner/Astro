@@ -4,14 +4,22 @@ class GameView {
     constructor(ctx) {
         this.game = new Game(ctx.canvas.width, ctx.canvas.height, ctx);
         this.ctx = ctx;
+        this.lastTime = 0;
+        this.start = this.start.bind(this)
+        this.animate = this.animate.bind(this)
     }
 
     start() {
-        let pause = setInterval(() => {
-            this.ctx.canvas.width = window.innerWidth;
-            this.ctx.canvas.height = window.innerHeight;
-            this.game.draw();
-        }, 10)
+        requestAnimationFrame(this.animate)
+    }
+
+    animate(currentTime) {
+        this.ctx.canvas.width = window.innerWidth;
+        this.ctx.canvas.height = window.innerHeight;
+        let delta = currentTime - this.lastTime
+        this.game.draw(delta)
+        this.lastTime = currentTime
+        requestAnimationFrame(this.animate)
     }
 }
 
