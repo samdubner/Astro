@@ -22,9 +22,22 @@ class Game {
     this.asteroids.push(new Asteroid(this.ctx));
   }
 
+  checkCollisions() {
+      this.ship.lasers.forEach((laser, i) => {
+          this.asteroids.forEach((asteroid, j) => {
+            let distance = Math.sqrt(((laser.pos[0] - asteroid.pos[0]) ** 2) + ((laser.pos[1] - asteroid.pos[1])**2))
+            if(distance < 50) {
+                this.ship.lasers.splice(i, 1)
+                this.asteroids.splice(j, 1)
+            }
+          })
+      })
+  }
+
   draw(delta) {
     this.allObjects().forEach((obj, idx) => {
       obj.move(delta);
+      this.checkCollisions()
       obj.draw();
       if (this.asteroids.length < 10) this.spawnAsteroid();
       if (obj.isOutOfBounds()) {

@@ -6,6 +6,7 @@ class Ship extends Entity {
     super(ctx);
     this.moveSpeed = 1;
     this.rotationSpeed = 2.5;
+    this.health = 10;
 
     this.lasers = []
 
@@ -80,6 +81,7 @@ class Ship extends Entity {
   }
 
   executeKeydowns() {
+    //for every pressed key invoke the method associated with that key
     for (let key in this.keypresses) {
       if (this.keypresses[key].pressed) this.keypresses[key].func();
     }
@@ -87,7 +89,8 @@ class Ship extends Entity {
 
   move(delta=1) {
     this.executeKeydowns();
-    this.updateUi();
+    //this.updateUi();
+
     //wrap spaceship
     if (this.pos[0] < 0) this.pos[0] += window.innerWidth;
     if (this.pos[1] < 0) this.pos[1] += window.innerHeight;
