@@ -17,7 +17,6 @@ class Enemy extends Entity {
     }
 
     move(delta) {
-        console.log(this.pos, this.vel)
         this.vel[0] = this.moveSpeed * Math.cos(this.rotation) * delta / 20
         this.vel[1] = this.moveSpeed * Math.sin(this.rotation) * delta / 20
     }

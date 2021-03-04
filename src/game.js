@@ -5,7 +5,7 @@ import Enemy from "./enemy.js";
 class Game {
   constructor(DIM_X, DIM_Y, ctx, view) {
     this.ctx = ctx;
-    this.ship = new Ship(ctx);
+    this.ship = new Ship(ctx, this);
 
     this.asteroids = [];
     this.enemies = [];
@@ -15,7 +15,7 @@ class Game {
       enemiesLeft: 0,
       spawnedEnemies: 0,
       size: 1,
-      ongoing: true,
+      ongoing: true
     };
 
     this.DIM_X = DIM_X;
@@ -38,8 +38,9 @@ class Game {
       if (this.wave.spawnedEnemies < this.wave.size) {
         this.enemies.push(new Enemy(this.ctx, this.ship));
         this.wave.spawnedEnemies++;
+        this.wave.enemiesLeft++;
       }
-    }, 5000);
+    }, 2500);
   }
 
   checkCollisions() {
@@ -55,14 +56,15 @@ class Game {
         }
       });
 
-      this.enemies.forEach((enemy, i) => {
+      this.enemies.forEach((enemy, j) => {
         let distance = Math.sqrt(
             (laser.pos[0] - enemy.pos[0]) ** 2 +
             (laser.pos[1] - enemy.pos[1]) ** 2
         );
 
         if (distance < 30) {
-          this.enemies.splice(i, 1);
+          this.enemies.splice(j, 1);
+          this.ship.lasers.splice(i, 1)
           this.wave.enemiesLeft--;
         }
       });
@@ -89,13 +91,32 @@ class Game {
       if (distance < 30) {
         this.ship.health--;
         this.enemies.splice(i, 1);
+        this.wave.enemiesLeft--;
       }
     });
+  }
+
+  startNextWave() {
+    this.wave.ongoing = false;
+    setTimeout(() => {
+      this.wave = {
+        count: this.wave.count + 1,
+        enemiesLeft: 0,
+        spawnedEnemies: 0,
+        size: this.wave.size + 1,
+        ongoing: true
+      };
+    }, 3500)
   }
 
   draw(delta) {
     if (this.ship.health <= 0) this.view.gameOver = true;
     if (this.asteroids.length < 10) this.spawnAsteroid();
+    if (this.wave.spawnedEnemies === this.wave.size && 
+        this.wave.enemiesLeft === 0 &&
+        this.wave.ongoing) {
+      this.startNextWave();
+    }
     this.checkCollisions();
     this.allObjects().forEach((obj, idx) => {
       obj.move(delta);

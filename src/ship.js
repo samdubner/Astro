@@ -5,9 +5,10 @@ class Ship extends Entity {
   constructor(ctx, game) {
     super(ctx);
     this.moveSpeed = 0.5;
-    this.rotationSpeed = 2.5;
+    this.rotationSpeed = 3;
     this.health = 5;
     this.ammo = 5;
+    this.game = game;
 
     this.lasers = [];
 
@@ -66,10 +67,12 @@ class Ship extends Entity {
   }
 
   updateUi() {
-    let ammo = document.getElementById("ammo-count");
-    let health = document.getElementById("health-count");
-    ammo.innerHTML = this.ammo;
-    health.innerHTML = this.health;
+    let waveNumber = document.getElementById("wave-number");
+    let enemiesSpawned = document.getElementById("enemies-spawned");
+    let enemiesLeft = document.getElementById("enemies-left")
+    waveNumber.innerHTML = this.game.wave.count;
+    enemiesSpawned.innerHTML = this.game.wave.spawnedEnemies;
+    enemiesLeft.innerHTML = this.game.wave.enemiesLeft;
   }
 
   executeKeydowns() {
