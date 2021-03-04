@@ -29,7 +29,7 @@ class Asteroid extends Entity {
     let ctx = this.ctx;
     ctx.beginPath();
     ctx.arc(this.pos[0], this.pos[1], 50, 0, 2 * Math.PI);
-    ctx.fillStyle = "#964B00";
+    ctx.fillStyle = "#654321";
     ctx.fill();
     ctx.strokeStyle = "#222222"
     ctx.stroke();

@@ -1,12 +1,17 @@
 import Entity from "./entity";
+import Laser from "./laser";
 
 class Ship extends Entity {
-  constructor(ctx) {
+  constructor(ctx, game) {
     super(ctx);
     this.moveSpeed = 1;
     this.rotationSpeed = 2.5;
+    this.health = 5;
+    this.ammo = 5;
 
-    this.pos = [500, 500];
+    this.lasers = [];
+
+    this.pos = [window.innerWidth / 2, window.innerHeight / 2git ];
     this.rotation = 0;
 
     this.keypresses = {
@@ -21,7 +26,7 @@ class Ship extends Entity {
 
     document.addEventListener("keydown", (e) => {
       if (e.key in this.keypresses) this.keypresses[e.key].pressed = true;
-      if (e.key === " ") console.log("shoot");
+      if (e.key === " ") this.spawnLaser();
     });
 
     document.addEventListener("keyup", (e) => {
@@ -57,30 +62,33 @@ class Ship extends Entity {
     }
   }
 
+  spawnLaser() {
+    if (this.ammo === 0) return;
+    this.lasers.push(new Laser(this.ctx, this));
+    this.ammo--;
+    setTimeout(() => {
+      if (this.ammo < 10) this.ammo++;
+    }, 2000);
+  }
+
   updateUi() {
-    let velTextX = document.getElementById("ship-velocity-x");
-    let velTextY = document.getElementById("ship-velocity-y");
-    let posTextX = document.getElementById("ship-position-x");
-    let posTextY = document.getElementById("ship-position-y");
-    let [x, y] = this.vel;
-    let x_vel = Math.round(10 * x) / 10;
-    let y_vel = Math.round(10 * y) / 10;
-    velTextX.innerHTML = `x: ${x_vel}`;
-    velTextY.innerHTML = `y: ${y_vel}`;
-    [x, y] = this.pos;
-    posTextX.innerHTML = `x: ${x}`;
-    posTextY.innerHTML = `y: ${y}`;
+    let ammo = document.getElementById("ammo-count");
+    let health = document.getElementById("health-count");
+    ammo.innerHTML = this.ammo;
+    health.innerHTML = this.health;
   }
 
   executeKeydowns() {
+    //for every pressed key invoke the method associated with that key
     for (let key in this.keypresses) {
       if (this.keypresses[key].pressed) this.keypresses[key].func();
     }
   }
 
-  move(delta=1) {
+  move(delta = 1) {
     this.executeKeydowns();
     this.updateUi();
+
     //wrap spaceship
     if (this.pos[0] < 0) this.pos[0] += window.innerWidth;
     if (this.pos[1] < 0) this.pos[1] += window.innerHeight;
@@ -105,11 +113,20 @@ class Ship extends Entity {
     }
 
     //update position
-    this.pos[0] += this.vel[0] * delta / 10;
-    this.pos[1] += this.vel[1] * delta / 10;
+    this.pos[0] += (this.vel[0] * delta) / 10;
+    this.pos[1] += (this.vel[1] * delta) / 10;
+
+    this.lasers.forEach((laser, i) => {
+      laser.move(delta);
+
+      if (laser.isOutOfBounds()) this.lasers.splice(i, 1);
+    });
   }
 
   draw() {
+    //draw lasers
+    this.lasers.forEach((laser) => laser.draw());
+
     //draw ship
     this.ctx.save();
     this.ctx.beginPath();
