@@ -13,16 +13,16 @@ class Game {
     allObjects() {
         return [this.ship, ...this.asteroids]
     }
-
+    
+    centerPosition() {
+        return [this.DIM_X / 2, this.DIM_Y / 2];
+    }
+    
     spawnAsteroid() {
         this.asteroids.push(new Asteroid(this.ctx))
     }
 
-    centerPosition() {
-        return [this.DIM_X / 2, this.DIM_Y / 2];
-    }
-
-    moveObjects() {
+    moveAsteroids() {
         this.asteroids.forEach(asteroid => {
             console.log(asteroid)
         })

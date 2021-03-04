@@ -13,11 +13,12 @@ class Ship extends Entity {
       ArrowUp: { pressed: false, func: () => this.updateVelocity("forward") },
       ArrowDown: { pressed: false, func: () => this.updateVelocity("backward") },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
-      ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
+      ArrowLeft: { pressed: false, func: () => this.updateRotation("left") }
     };
 
     document.addEventListener("keydown", (e) => {
       if (e.key in this.keypresses) this.keypresses[e.key].pressed = true;
+      if (e.key === " ") console.log("shoot")
     });
 
     document.addEventListener("keyup", (e) => {
