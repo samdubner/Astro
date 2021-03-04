@@ -11,15 +11,15 @@ class Ship extends Entity {
 
     this.lasers = [];
 
-    this.pos = [window.innerWidth / 2, window.innerHeight / 2git ];
+    this.pos = [window.innerWidth / 2, window.innerHeight / 2 ];
     this.rotation = 0;
 
     this.keypresses = {
       ArrowUp: { pressed: false, func: () => this.updateVelocity("forward") },
-      ArrowDown: {
-        pressed: false,
-        func: () => this.updateVelocity("backward"),
-      },
+    //   ArrowDown: {
+    //     pressed: false,
+    //     func: () => this.updateVelocity("backward"),
+    //   },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
       ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
     };
@@ -41,12 +41,6 @@ class Ship extends Entity {
         this.vel[0] +=
           this.moveSpeed * Math.cos((this.rotation * Math.PI) / 180);
         this.vel[1] +=
-          this.moveSpeed * Math.sin((this.rotation * Math.PI) / 180);
-        break;
-      case "backward":
-        this.vel[0] -=
-          this.moveSpeed * Math.cos((this.rotation * Math.PI) / 180);
-        this.vel[1] -=
           this.moveSpeed * Math.sin((this.rotation * Math.PI) / 180);
         break;
     }
@@ -135,6 +129,7 @@ class Ship extends Entity {
     this.ctx.moveTo(-25, 0);
     this.ctx.lineTo(0, 50);
     this.ctx.lineTo(25, 0);
+    this.ctx.lineTo(0, 11);
     this.ctx.fillStyle = "white";
     this.ctx.fill();
     this.ctx.closePath();
