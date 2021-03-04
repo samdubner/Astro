@@ -4,7 +4,7 @@ import Laser from "./laser";
 class Ship extends Entity {
   constructor(ctx, game) {
     super(ctx);
-    this.moveSpeed = 1;
+    this.moveSpeed = 0.5;
     this.rotationSpeed = 2.5;
     this.health = 5;
     this.ammo = 5;
