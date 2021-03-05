@@ -6,7 +6,7 @@ class Ship extends Entity {
     super(ctx);
     this.moveSpeed = 0.5;
     this.rotationSpeed = 3;
-    this.health = 1000000;
+    this.health = 5;
     this.ammo = 5;
     this.game = game;
 
@@ -63,12 +63,8 @@ class Ship extends Entity {
   }
 
   updateUi() {
-    let waveNumber = document.getElementById("wave-number");
-    let enemiesSpawned = document.getElementById("enemies-spawned");
-    let enemiesLeft = document.getElementById("enemies-left")
-    waveNumber.innerHTML = this.game.wave.count;
-    enemiesSpawned.innerHTML = this.game.wave.spawnedEnemies;
-    enemiesLeft.innerHTML = this.game.wave.enemiesLeft;
+    let scoreEle = document.getElementById("score-ele")
+    scoreEle.innerText = `${this.game.score}`
   }
 
   executeKeydowns() {

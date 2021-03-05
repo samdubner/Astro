@@ -7,7 +7,30 @@
     visibility: hidden;
 }
 
-#ship-info {
+#score-box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(20, 14, 47, 0.6);
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#score-box h2 {
+    font-size: 20px;
+}
+
+#score-box h1 {
+    font-size: 40px
+}
+
+/* #ship-info {
     background-color: gray;
     display: flex;
     flex-direction: column;
@@ -17,7 +40,7 @@
     height: 10vh;
     border-radius: 5px;
     color: black;
-}
+} */
 
 #pause-info {
     position: absolute;
