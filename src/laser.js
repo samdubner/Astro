@@ -4,8 +4,8 @@ class Laser extends Entity {
   constructor(ctx, ship) {
     super(ctx);
     let shipAngle = (ship.rotation * Math.PI) / 180;
-    let x_vel = 10 * Math.cos(shipAngle);
-    let y_vel = 10 * Math.sin(shipAngle);
+    let x_vel = 20 * Math.cos(shipAngle) + ship.vel[0];
+    let y_vel = 20 * Math.sin(shipAngle) + ship.vel[1];
     this.vel = [x_vel, y_vel];
     this.pos = [ship.pos[0], ship.pos[1]];
   }
