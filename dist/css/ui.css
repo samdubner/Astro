@@ -34,13 +34,22 @@
     left: 10px;
 }
 
+#wave-box {
+    top: 10px;
+    right: 10px;
+}
+
 #wave-ele {
     margin-right: 15px;
 }
 
-#wave-box {
-    top: 10px;
-    right: 10px;
+#health-box {
+    bottom: 10px;
+    left: 10px;
+}
+
+#health-ele {
+    margin-right: 15px;
 }
 
 #pause-info {
