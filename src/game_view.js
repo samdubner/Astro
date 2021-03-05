@@ -13,10 +13,9 @@ class GameView {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (!this.gameOver) {
-            this.paused = !this.paused
-            this.togglePauseScreen()
-        };
-
+          this.paused = !this.paused;
+          this.togglePauseScreen();
+        }
       }
     });
   }
@@ -27,23 +26,37 @@ class GameView {
   }
 
   animate(currentTime) {
+    let scoreInfo = document.getElementById("score-info");
+    this.gameOver
+      ? (scoreInfo.style.visibility = "visible")
+      : (scoreInfo.style.visibility = "hidden");
     if (!this.gameOver && !this.paused) {
       this.ctx.canvas.width = window.innerWidth;
       this.ctx.canvas.height = window.innerHeight;
       let delta = currentTime - this.lastTime;
       this.game.draw(delta);
+    } else if (this.gameOver) {
+        let currentScore = document.getElementById("game-over-score");
+        let highscore = document.getElementById("highscore");
+        let storedHighscore = localStorage.getItem("highscore")
+        if (storedHighscore === null || this.game.score > storedHighscore) {
+            localStorage.setItem("highscore", this.game.score)
+            storedHighscore = this.game.score
+        }
+        currentScore.innerHTML = `Your Score: ${this.game.score}`
+        highscore.innerHTML = `Highscore: ${storedHighscore}`
     }
     this.lastTime = currentTime;
     requestAnimationFrame(this.animate);
   }
 
   togglePauseScreen() {
-      let pauseInfo = document.getElementById("pause-info");
-      if (this.paused) {
-        pauseInfo.style.visibility = "visible"
-      } else {
-        pauseInfo.style.visibility = "hidden"
-      }
+    let pauseInfo = document.getElementById("pause-info");
+    if (this.paused) {
+      pauseInfo.style.visibility = "visible";
+    } else {
+      pauseInfo.style.visibility = "hidden";
+    }
   }
 }
 
