@@ -2,11 +2,12 @@ import Game from "./game";
 
 class GameView {
   constructor(ctx) {
-    this.game = new Game(ctx.canvas.width, ctx.canvas.height, ctx, this);
+    this.game = new Game(ctx, this);
     this.ctx = ctx;
     this.lastTime = 0;
     this.start = this.start.bind(this);
     this.animate = this.animate.bind(this);
+    this.restartGame = this.restartGame.bind(this);
     this.paused = false;
     this.gameOver = true;
 
@@ -18,6 +19,8 @@ class GameView {
         }
       }
     });
+
+    document.addEventListener("keydown", this.restartGame);
   }
 
   start() {
@@ -36,18 +39,25 @@ class GameView {
       let delta = currentTime - this.lastTime;
       this.game.draw(delta);
     } else if (this.gameOver) {
-        let currentScore = document.getElementById("game-over-score");
-        let highscore = document.getElementById("highscore");
-        let storedHighscore = localStorage.getItem("highscore")
-        if (storedHighscore === null || this.game.score > storedHighscore) {
-            localStorage.setItem("highscore", this.game.score)
-            storedHighscore = this.game.score
-        }
-        currentScore.innerHTML = `Your Score: ${this.game.score}`
-        highscore.innerHTML = `Highscore: ${storedHighscore}`
+      let currentScore = document.getElementById("game-over-score");
+      let highscore = document.getElementById("highscore");
+      let storedHighscore = localStorage.getItem("highscore");
+      if (storedHighscore === null || this.game.score > storedHighscore) {
+        localStorage.setItem("highscore", this.game.score);
+        storedHighscore = this.game.score;
+      }
+      currentScore.innerHTML = `Your Score: ${this.game.score}`;
+      highscore.innerHTML = `Highscore: ${storedHighscore}`;
     }
     this.lastTime = currentTime;
     requestAnimationFrame(this.animate);
+  }
+
+  restartGame(e) {
+      if (e.key === "r" && this.gameOver) {
+      this.game = new Game(this.ctx, this);
+      this.start();
+    }
   }
 
   togglePauseScreen() {

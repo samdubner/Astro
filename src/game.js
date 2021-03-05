@@ -3,7 +3,7 @@ import Ship from "./ship.js";
 import Enemy from "./enemy.js";
 
 class Game {
-  constructor(DIM_X, DIM_Y, ctx, view) {
+  constructor(ctx, view) {
     this.ctx = ctx;
     this.ship = new Ship(ctx, this);
 
@@ -22,8 +22,8 @@ class Game {
       ongoing: true
     };
 
-    this.DIM_X = DIM_X;
-    this.DIM_Y = DIM_Y;
+    this.DIM_X = ctx.canvas.width;
+    this.DIM_Y = ctx.canvas.height;
     this.view = view;
 
     this.spawnEnemies();
