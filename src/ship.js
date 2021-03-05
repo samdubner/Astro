@@ -6,7 +6,7 @@ class Ship extends Entity {
     super(ctx);
     this.moveSpeed = 0.5;
     this.rotationSpeed = 3;
-    this.health = 5;
+    this.health = 1000000;
     this.ammo = 5;
     this.game = game;
 
@@ -17,13 +17,8 @@ class Ship extends Entity {
 
     this.keypresses = {
       ArrowUp: { pressed: false, func: () => this.updateVelocity("forward") },
-    //   ArrowDown: {
-    //     pressed: false,
-    //     func: () => this.updateVelocity("backward"),
-    //   },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
       ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
-      Escaped: {pressed: false, func: () => this.pauseGame() }
     };
 
     document.addEventListener("keydown", (e) => {
@@ -130,10 +125,10 @@ class Ship extends Entity {
     this.ctx.beginPath();
     this.ctx.translate(this.pos[0], this.pos[1]);
     this.ctx.rotate((Math.PI / 180) * (this.rotation - 90));
-    this.ctx.moveTo(-25, 0);
-    this.ctx.lineTo(0, 50);
-    this.ctx.lineTo(25, 0);
-    this.ctx.lineTo(0, 11);
+    this.ctx.moveTo(-25, -25);
+    this.ctx.lineTo(0, 25);
+    this.ctx.lineTo(25, -25);
+    this.ctx.lineTo(0, -14);
     this.ctx.fillStyle = "white";
     this.ctx.fill();
     this.ctx.closePath();
