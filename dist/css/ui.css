@@ -30,14 +30,14 @@
     align-items: center;
     justify-content: center;
     color: white;
+    -webkit-text-stroke: 1px black;
 }
 
 #pause-info h1 {
     font-size: 100px;
     margin-bottom: 30px;
-    -webkit-text-stroke: 1px black;
 }
 
 #pause-info h2 {
-    font-size: 20px;
+    font-size: 25px;
 }
