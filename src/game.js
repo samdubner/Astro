@@ -89,10 +89,10 @@ class Game {
     this.enemies.forEach((enemy, i) => {
       let distance = Math.sqrt(
         (this.ship.pos[0] - enemy.pos[0]) ** 2 +
-          (this.ship.pos[1] - enemy.pos[1]) ** 2
+        (this.ship.pos[1] - enemy.pos[1]) ** 2
       );
 
-      if (distance < 30) {
+      if (distance < 65) {
         this.ship.health--;
         this.enemies.splice(i, 1);
         this.wave.enemiesLeft--;
