@@ -23,6 +23,7 @@ class Ship extends Entity {
     //   },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
       ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
+      Escaped: {pressed: false, func: () => this.pauseGame() }
     };
 
     document.addEventListener("keydown", (e) => {

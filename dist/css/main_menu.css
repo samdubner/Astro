@@ -1,0 +1,38 @@
+#game-title {
+    font-weight: 700;
+    cursor: default;
+    user-select: none;
+}
+
+#game-title h1 {
+    font-size: 125px;
+    color: white;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#game-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-options h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#game-options h2:hover {
+    color: orange;
+}
+
+#game-version {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: white;
+    font-weight: 300;
+}

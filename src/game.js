@@ -8,7 +8,10 @@ class Game {
     this.ship = new Ship(ctx, this);
 
     this.asteroids = [];
+    this.asteroidCount = 8;
     this.enemies = [];
+
+    this.score = 0;
 
     this.wave = {
       count: 1,
@@ -66,6 +69,7 @@ class Game {
           this.enemies.splice(j, 1);
           this.ship.lasers.splice(i, 1)
           this.wave.enemiesLeft--;
+          this.score += 50;
         }
       });
     });
@@ -111,7 +115,7 @@ class Game {
 
   draw(delta) {
     if (this.ship.health <= 0) this.view.gameOver = true;
-    if (this.asteroids.length < 10) this.spawnAsteroid();
+    if (this.asteroids.length < this.asteroidCount) this.spawnAsteroid();
     if (this.wave.spawnedEnemies === this.wave.size && 
         this.wave.enemiesLeft === 0 &&
         this.wave.ongoing) {
