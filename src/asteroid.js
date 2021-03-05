@@ -27,12 +27,15 @@ class Asteroid extends Entity {
 
   draw() {
     let ctx = this.ctx;
-    ctx.beginPath();
-    ctx.arc(this.pos[0], this.pos[1], 50, 0, 2 * Math.PI);
-    ctx.fillStyle = "#654321";
-    ctx.fill();
-    ctx.strokeStyle = "#222222"
-    ctx.stroke();
+    let asteroidImage = new Image(50, 50)
+    asteroidImage.src = "../assets/meteorite.png"
+    ctx.drawImage(asteroidImage, this.pos[0] - 25, this.pos[1] - 25)
+    // ctx.beginPath();
+    // ctx.arc(this.pos[0], this.pos[1], 50, 0, 2 * Math.PI);
+    // ctx.fillStyle = "#654321";
+    // ctx.fill();
+    // ctx.strokeStyle = "#222222"
+    // ctx.stroke();
   }
 
   isOutOfBounds() {
