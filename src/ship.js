@@ -17,13 +17,8 @@ class Ship extends Entity {
 
     this.keypresses = {
       ArrowUp: { pressed: false, func: () => this.updateVelocity("forward") },
-    //   ArrowDown: {
-    //     pressed: false,
-    //     func: () => this.updateVelocity("backward"),
-    //   },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
       ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
-      Escaped: {pressed: false, func: () => this.pauseGame() }
     };
 
     document.addEventListener("keydown", (e) => {
@@ -68,12 +63,14 @@ class Ship extends Entity {
   }
 
   updateUi() {
-    let waveNumber = document.getElementById("wave-number");
-    let enemiesSpawned = document.getElementById("enemies-spawned");
-    let enemiesLeft = document.getElementById("enemies-left")
-    waveNumber.innerHTML = this.game.wave.count;
-    enemiesSpawned.innerHTML = this.game.wave.spawnedEnemies;
-    enemiesLeft.innerHTML = this.game.wave.enemiesLeft;
+    let scoreEle = document.getElementById("score-text")
+    let waveCount = document.getElementById("wave-count")
+    let enemyCount = document.getElementById("enemy-count")
+    let healthCount = document.getElementById("health-count")
+    scoreEle.innerText = `${this.game.score}`
+    waveCount.innerText = `${this.game.wave.count}`
+    enemyCount.innerText = `${this.game.wave.enemiesLeftInWave}`
+    healthCount.innerText = `${this.health}`
   }
 
   executeKeydowns() {
@@ -130,10 +127,10 @@ class Ship extends Entity {
     this.ctx.beginPath();
     this.ctx.translate(this.pos[0], this.pos[1]);
     this.ctx.rotate((Math.PI / 180) * (this.rotation - 90));
-    this.ctx.moveTo(-25, 0);
-    this.ctx.lineTo(0, 50);
-    this.ctx.lineTo(25, 0);
-    this.ctx.lineTo(0, 11);
+    this.ctx.moveTo(-25, -25);
+    this.ctx.lineTo(0, 25);
+    this.ctx.lineTo(25, -25);
+    this.ctx.lineTo(0, -14);
     this.ctx.fillStyle = "white";
     this.ctx.fill();
     this.ctx.closePath();

@@ -7,16 +7,49 @@
     visibility: hidden;
 }
 
-#ship-info {
-    background-color: gray;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 20vw;
-    height: 10vh;
+.ui-box {
+    position: absolute;
+    background-color: rgba(20, 14, 47, 0.6);
+    color: white;
+    padding: 1em;
     border-radius: 5px;
-    color: black;
+    border: 1px solid black;
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.ui-box h2 {
+    font-size: 20px;
+    text-decoration: underline;
+    color: white;
+}
+
+.ui-box h1 {
+    font-size: 40px;
+}
+
+#score-box {
+    top: 10px;
+    left: 10px;
+}
+
+#wave-box {
+    top: 10px;
+    right: 10px;
+}
+
+#wave-ele {
+    margin-right: 15px;
+}
+
+#health-box {
+    bottom: 10px;
+    left: 10px;
+}
+
+#health-ele {
+    margin-right: 15px;
 }
 
 #pause-info {

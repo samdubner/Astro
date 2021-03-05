@@ -10,10 +10,25 @@
 <body>
     <canvas id="astro-canvas" width="100vw" height="100vh"></canvas>
     <div id="ui-container">
-        <div id="ship-info">
-            <h1>Wave Number</h1><h1 id="wave-number"></h1>
-            <h1>Enemies Spawned</h1><h1 id="enemies-spawned"></h1>
-            <h1>Enemies Left</h1><h1 id="enemies-left"></h1>
+        <div class="ui-box" id="score-box">
+            <div id="health-ele">
+                <h2>Health:</h2>
+                <h1 id="health-count"></h1>
+            </div>
+            <div id="score-ele">
+                <h2>Score:</h2>
+                <h1 id="score-text"></h1>
+            </div>
+        </div>
+        <div class="ui-box" id="wave-box">
+            <div id="wave-ele">
+                <h2>Wave #</h2>
+                <h1 id="wave-count"></h1>
+            </div>
+            <div id="enemies-ele">
+                <h2>Enemies</h2>
+                <h1 id="enemy-count"></h1>
+            </div>
         </div>
     </div>
     <div id="pause-info">
@@ -22,8 +37,8 @@
     </div>
     <div id="score-info">
         <h1>Game Over</h1>
-        <h2 id="game-over-score">Your Score: 34234</h1>
-        <h3 id="highscore">Highscore: 234234</h2>
+        <h2 id="game-over-score">Your Score:</h1>
+        <h3 id="highscore">Highscore:</h2>
     </div>
     <div id="main-menu">
         <div id="game-title">
