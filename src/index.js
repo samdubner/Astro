@@ -8,5 +8,4 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.canvas.height = window.innerHeight;
 
   let gameView = new GameView(ctx);
-  gameView.start()
 });
