@@ -63,8 +63,12 @@ class Ship extends Entity {
   }
 
   updateUi() {
-    let scoreEle = document.getElementById("score-ele")
+    let scoreEle = document.getElementById("score-text")
+    let waveCount = document.getElementById("wave-count")
+    let enemyCount = document.getElementById("enemy-count")
     scoreEle.innerText = `${this.game.score}`
+    waveCount.innerText = `${this.game.wave.count}`
+    enemyCount.innerText = `${this.game.wave.enemiesLeftInWave}`
   }
 
   executeKeydowns() {

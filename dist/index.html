@@ -10,15 +10,21 @@
 <body>
     <canvas id="astro-canvas" width="100vw" height="100vh"></canvas>
     <div id="ui-container">
-        <div id="score-box">
-            <h2>Score:</h2>
-            <h1 id="score-ele"></h1>
+        <div class="ui-box" id="score-box">
+            <div id="score-ele">
+                <h2>Score:</h2>
+                <h1 id="score-text"></h1>
+            </div>
         </div>
-        <div id="wave-info">
-
-        </div>
-        <div id="ship-info">
-
+        <div class="ui-box" id="wave-box">
+            <div id="wave-ele">
+                <h2>Wave #</h2>
+                <h1 id="wave-count"></h1>
+            </div>
+            <div id="enemies-ele">
+                <h2>Enemies</h2>
+                <h1 id="enemy-count"></h1>
+            </div>
         </div>
     </div>
     <div id="pause-info">

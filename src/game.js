@@ -17,6 +17,7 @@ class Game {
       count: 1,
       enemiesLeft: 0,
       spawnedEnemies: 0,
+      enemiesLeftInWave: 1,
       size: 1,
       ongoing: true
     };
@@ -69,6 +70,7 @@ class Game {
           this.enemies.splice(j, 1);
           this.ship.lasers.splice(i, 1)
           this.wave.enemiesLeft--;
+          this.wave.enemiesLeftInWave--;
           this.score += 50;
         }
       });
@@ -96,6 +98,7 @@ class Game {
         this.ship.health--;
         this.enemies.splice(i, 1);
         this.wave.enemiesLeft--;
+        this.wave.enemiesLeftInWave--;
       }
     });
   }
@@ -103,11 +106,14 @@ class Game {
   startNextWave() {
     this.wave.ongoing = false;
     setTimeout(() => {
+      let newEnemies = Math.floor(Math.random() * 3);
+      let nextWaveSize = this.wave.size + newEnemies;
       this.wave = {
         count: this.wave.count + 1,
         enemiesLeft: 0,
         spawnedEnemies: 0,
-        size: this.wave.size + 1,
+        enemiesLeftInWave: nextWaveSize,
+        size: nextWaveSize,
         ongoing: true
       };
     }, 3500)
