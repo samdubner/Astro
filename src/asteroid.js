@@ -4,6 +4,7 @@ class Asteroid extends Entity {
   constructor(ctx) {
     super(ctx);
     this.randomPos();
+    this.randomRot = Math.floor(Math.random() * 100) / 10;
     let rand_x
     let rand_y
     do {
@@ -26,16 +27,9 @@ class Asteroid extends Entity {
   }
 
   draw() {
-    let ctx = this.ctx;
     let asteroidImage = new Image(50, 50)
-    asteroidImage.src = "../assets/meteorite.png"
-    ctx.drawImage(asteroidImage, this.pos[0] - 25, this.pos[1] - 25)
-    // ctx.beginPath();
-    // ctx.arc(this.pos[0], this.pos[1], 50, 0, 2 * Math.PI);
-    // ctx.fillStyle = "#654321";
-    // ctx.fill();
-    // ctx.strokeStyle = "#222222"
-    // ctx.stroke();
+    asteroidImage.src = "../assets/asteroid.png"
+    this.ctx.drawImage(asteroidImage, this.pos[0] - 25, this.pos[1] - 25)
   }
 
   isOutOfBounds() {
