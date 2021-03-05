@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mainMenu.style.visibility = "hidden"
     uiOverlay.style.visibility = "visible"
     canvas.style.visibility = "visible"
-    console.log("clicked start")
     gameView.start();
   })
 });

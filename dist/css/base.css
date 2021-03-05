@@ -18,3 +18,12 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+#pause-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+}
