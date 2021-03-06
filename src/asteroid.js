@@ -28,7 +28,7 @@ class Asteroid extends Entity {
 
   draw() {
     let asteroidImage = new Image(50, 50)
-    asteroidImage.src = "/assets/asteroid.png"
+    asteroidImage.src = "./assets/asteroid.png"
     this.ctx.drawImage(asteroidImage, this.pos[0] - 50, this.pos[1] - 50)
   }
 
