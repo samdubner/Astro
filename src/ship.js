@@ -12,7 +12,7 @@ class Ship extends Entity {
 
     this.lasers = [];
 
-    this.pos = [window.innerWidth / 2, window.innerHeight / 2 ];
+    this.pos = [window.innerWidth / 2, window.innerHeight / 2];
     this.rotation = 0;
 
     this.keypresses = {
@@ -63,14 +63,14 @@ class Ship extends Entity {
   }
 
   updateUi() {
-    let scoreEle = document.getElementById("score-text")
-    let waveCount = document.getElementById("wave-count")
-    let enemyCount = document.getElementById("enemy-count")
-    let healthCount = document.getElementById("health-count")
-    scoreEle.innerText = `${this.game.score}`
-    waveCount.innerText = `${this.game.wave.count}`
-    enemyCount.innerText = `${this.game.wave.enemiesLeftInWave}`
-    healthCount.innerText = `${this.health}`
+    let scoreEle = document.getElementById("score-text");
+    let waveCount = document.getElementById("wave-count");
+    let enemyCount = document.getElementById("enemy-count");
+    let healthCount = document.getElementById("health-count");
+    scoreEle.innerText = `${this.game.score}`;
+    waveCount.innerText = `${this.game.wave.count}`;
+    enemyCount.innerText = `${this.game.wave.enemiesLeftInWave}`;
+    healthCount.innerText = `${this.health}`;
   }
 
   executeKeydowns() {
@@ -94,7 +94,6 @@ class Ship extends Entity {
     if (Math.abs(this.vel[0]) - 0.1 < 0.1) this.vel[0] = 0;
     if (Math.abs(this.vel[1]) - 0.1 < 0.1) this.vel[1] = 0;
 
-    //space drag
     if (this.vel[0] > 0) {
       this.vel[0] -= 0.1;
     } else if (this.vel[0] < 0) {
@@ -103,9 +102,9 @@ class Ship extends Entity {
 
     if (this.vel[1] > 0) {
       this.vel[1] -= 0.1;
-    } else if (this.vel[1] < 0) {
+   } else if (this.vel[1] < 0) {
       this.vel[1] += 0.1;
-    }
+   }
 
     //update position
     this.pos[0] += (this.vel[0] * delta) / 10;
