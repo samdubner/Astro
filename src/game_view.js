@@ -7,7 +7,6 @@ class GameView {
     this.lastTime = 0;
     this.start = this.start.bind(this);
     this.animate = this.animate.bind(this);
-    this.restartGame = this.restartGame.bind(this);
     this.paused = false;
     this.gameOver = true;
 
@@ -19,8 +18,6 @@ class GameView {
         }
       }
     });
-
-    document.addEventListener("keydown", this.restartGame);
   }
 
   start() {
@@ -51,13 +48,6 @@ class GameView {
     }
     this.lastTime = currentTime;
     requestAnimationFrame(this.animate);
-  }
-
-  restartGame(e) {
-      if (e.key === "r" && this.gameOver) {
-      this.game = new Game(this.ctx, this);
-      this.start();
-    }
   }
 
   togglePauseScreen() {
