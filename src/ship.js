@@ -4,10 +4,10 @@ import Laser from "./laser";
 class Ship extends Entity {
   constructor(ctx, game) {
     super(ctx);
-    this.moveSpeed = 0.5;
-    this.rotationSpeed = 3;
+    this.moveSpeed = 1;
+    this.rotationSpeed = 2;
     this.health = 5;
-    this.ammo = 5;
+    this.ammo = 2;
     this.game = game;
 
     this.lasers = [];
@@ -95,9 +95,9 @@ class Ship extends Entity {
     if (Math.abs(this.vel[1]) - 0.1 < 0.1) this.vel[1] = 0;
 
     if (this.vel[0] > 0) {
-      this.vel[0] -= 0.1;
+      this.vel[0] -= 0.05;
     } else if (this.vel[0] < 0) {
-      this.vel[0] += 0.1;
+      this.vel[0] += 0.05;
     }
 
     if (this.vel[1] > 0) {
