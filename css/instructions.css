@@ -1,7 +1,11 @@
-#instructions-container {
-    width: 100vw;
+#page-jumbotron {
     height: 100vh;
     background-image: url("../assets/background.png");
+}
+
+#instructions-container {
+    width: 100vw;
+    /* height: 100vh; */
 }
 
 #segment-container {
@@ -18,7 +22,7 @@
     border-radius: 5px;
 }
 
-#instructions-title {
+#segment-title {
     text-align: center;
     color: white;
     height: 10%;
@@ -53,4 +57,33 @@
 
 #back-button:hover {
     background-color: #161616;
+}
+
+#about-container {
+    width: 100vw;
+    /* height: 100vh; */
+    background-image: url("../assets/background.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#info-container {
+    width: 60%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+#info-container h1 {
+    color: white;
+    /* font-size: 10px; */
+}
+
+#about-text {
+    font-size: 2em;
 }

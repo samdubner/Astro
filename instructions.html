@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="application.css" />
     <title>Astro - How to Play</title>
-</head>
-<body>
-    <div id="instructions-container">
-        <h1 id="instructions-title">How To Play</h1>
-        <div id="segment-container">
-            <div class="instruction-segment" id="movement-instructions">
-                <img class="instructions-image" src="assets/instruction1.png"/>
-                <h1 class="instructions-text">Use the Arrow Keys to navigate and Spacebar to shoot</h1>
-            </div>
-            <div class="instruction-segment" id="gameplay-instructions">
-                <img class="instructions-image" src="assets/instruction2.png"/>
-                <h1 class="instructions-text">Avoid Asteroids and Enemies to avoid losing health!</h1>
-            </div>
-            <div class="instruction-segment" id="score-instructions">
-                <img class="instructions-image" src="assets/instruction3.png"/>
-                <h1 class="instructions-text">Defeat enemy ships to increase your score and survive as long as you can!</h1>
-            </div>
+  </head>
+  <body>
+    <div id="page-jumbotron">
+      <div id="about-container">
+        <h1 id="segment-title">About</h1>
+        <div id="info-container">
+          <h1 id="about-text">
+            Astro is a top down space game with inspiration from Asteroids. The
+            goal is to stay alive as long as possible surviving waves of enemies
+            and dangerous space rocks.
+          </h1>
         </div>
-        <a href="index.html"><input id="back-button" type="button" value="Back to Main Menu" /></a>
+      </div>
+      <div id="instructions-container">
+        <h1 id="segment-title">How To Play</h1>
+        <div id="segment-container">
+          <div class="instruction-segment" id="movement-instructions">
+            <img class="instructions-image" src="assets/instruction1.png" />
+            <h1 class="instructions-text">
+              Use the Arrow Keys to navigate and Spacebar to shoot
+            </h1>
+          </div>
+          <div class="instruction-segment" id="gameplay-instructions">
+            <img class="instructions-image" src="assets/instruction2.png" />
+            <h1 class="instructions-text">
+              Avoid Asteroids and Enemies to avoid losing health!
+            </h1>
+          </div>
+          <div class="instruction-segment" id="score-instructions">
+            <img class="instructions-image" src="assets/instruction3.png" />
+            <h1 class="instructions-text">
+              Defeat enemy ships to increase your score and survive as long as
+              you can!
+            </h1>
+          </div>
+        </div>
+        <a href="index.html"
+          ><input id="back-button" type="button" value="Back to Main Menu"
+        /></a>
+      </div>
     </div>
-</body>
+  </body>
 </html>
