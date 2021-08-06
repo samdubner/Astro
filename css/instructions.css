@@ -22,12 +22,16 @@
     border-radius: 5px;
 }
 
-#segment-title {
+.segment-title {
     text-align: center;
     color: white;
     height: 10%;
     font-size: 40px;
     padding-top: 20px;
+}
+
+#about-title {
+    margin-bottom: 0.5em;
 }
 
 .instructions-image {
@@ -67,11 +71,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 3em;
+    margin-bottom: 3em;
 }
 
 #info-container {
     width: 60%;
     height: 50%;
+    padding: 1em 2em;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -81,9 +88,5 @@
 
 #info-container h1 {
     color: white;
-    /* font-size: 10px; */
-}
-
-#about-text {
-    font-size: 2em;
+    font-size: 30px;
 }
