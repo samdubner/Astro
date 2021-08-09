@@ -101,9 +101,9 @@ class Ship extends Entity {
     }
 
     if (this.vel[1] > 0) {
-      this.vel[1] -= 0.1;
+      this.vel[1] -= 0.05;
    } else if (this.vel[1] < 0) {
-      this.vel[1] += 0.1;
+      this.vel[1] += 0.05;
    }
 
     //update position
