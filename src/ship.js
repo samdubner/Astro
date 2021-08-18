@@ -4,10 +4,10 @@ import Laser from "./laser";
 class Ship extends Entity {
   constructor(ctx, game) {
     super(ctx);
-    this.moveSpeed = 0.5;
-    this.rotationSpeed = 3;
+    this.moveSpeed = 1;
+    this.rotationSpeed = 2;
     this.health = 5;
-    this.ammo = 5;
+    this.ammo = 2;
     this.game = game;
 
     this.lasers = [];
@@ -16,7 +16,7 @@ class Ship extends Entity {
     this.rotation = 0;
 
     this.keypresses = {
-      ArrowUp: { pressed: false, func: () => this.updateVelocity("forward") },
+      ArrowUp: { pressed: false, func: () => this.updateVelocity() },
       ArrowRight: { presssed: false, func: () => this.updateRotation("right") },
       ArrowLeft: { pressed: false, func: () => this.updateRotation("left") },
     };
@@ -31,16 +31,11 @@ class Ship extends Entity {
     });
   }
 
-  updateVelocity(direction) {
+  updateVelocity() {
     if (Math.sqrt(this.vel[0] ** 2 + this.vel[1] ** 2) > 8) return;
-    switch (direction) {
-      case "forward":
-        this.vel[0] +=
-          this.moveSpeed * Math.cos((this.rotation * Math.PI) / 180);
-        this.vel[1] +=
-          this.moveSpeed * Math.sin((this.rotation * Math.PI) / 180);
-        break;
-    }
+
+    this.vel[0] += this.moveSpeed * Math.cos((this.rotation * Math.PI) / 180);
+    this.vel[1] += this.moveSpeed * Math.sin((this.rotation * Math.PI) / 180);
   }
 
   updateRotation(direction) {
@@ -95,16 +90,16 @@ class Ship extends Entity {
     if (Math.abs(this.vel[1]) - 0.1 < 0.1) this.vel[1] = 0;
 
     if (this.vel[0] > 0) {
-      this.vel[0] -= 0.1;
+      this.vel[0] -= 0.05;
     } else if (this.vel[0] < 0) {
-      this.vel[0] += 0.1;
+      this.vel[0] += 0.05;
     }
 
     if (this.vel[1] > 0) {
-      this.vel[1] -= 0.1;
-   } else if (this.vel[1] < 0) {
-      this.vel[1] += 0.1;
-   }
+      this.vel[1] -= 0.05;
+    } else if (this.vel[1] < 0) {
+      this.vel[1] += 0.05;
+    }
 
     //update position
     this.pos[0] += (this.vel[0] * delta) / 10;

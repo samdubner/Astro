@@ -1,6 +1,6 @@
 {
   "name": "astro",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/IsoVoyd/Astro.git"
   },
-  "author": "",
+  "author": "Samuel Dubner",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/IsoVoyd/Astro/issues"
