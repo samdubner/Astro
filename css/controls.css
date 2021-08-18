@@ -3,9 +3,9 @@
   background-image: url("../assets/background.png");
 }
 
-#instructions-container {
+#controls-container {
   width: 100vw;
-  /* height: 100vh; */
+  margin-top: 10%;
 }
 
 #segment-container {
@@ -16,10 +16,15 @@
   justify-content: space-evenly;
 }
 
-.instruction-segment {
+#controls-segment {
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  width: 50em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 1em;
 }
 
 .segment-title {
@@ -31,17 +36,7 @@
   margin-bottom: 20px;
 }
 
-#about-title {
-  margin-bottom: 0.5em;
-}
-
-.instructions-image {
-  width: 300px;
-  margin-bottom: 20px;
-  border: 1px solid black;
-}
-
-.instructions-text {
+.controls-text {
   text-align: center;
   color: white;
   font-size: 30px;

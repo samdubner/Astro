@@ -24,9 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keydown", (e) => {
-    console.log("key was pressed");
     if(e.key === "r" && gameView.gameOver) {
-      console.log("r was pressed and game is over")
       gameView = new GameView(ctx)
       gameView.start();
     }
