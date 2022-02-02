@@ -9,10 +9,11 @@
     <title>Astro</title>
 </head>
 <body>
-    <audio controls autoplay muted>
-        <source src="./assets/background-music.mp3">
+    <audio id="background-audio" controls autoplay muted>
+        <source src="./assets/background-music.mp3" type="audio/mpeg">
     </audio>
     <canvas id="astro-canvas" width="100vw" height="100vh"></canvas>
+    <i id="volume-button" class="fas fa-volume-mute"></i>
     <div id="ui-container">
         <div class="ui-box" id="score-box">
             <div id="health-ele">

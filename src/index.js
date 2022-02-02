@@ -13,8 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let uiOverlay = document.getElementById("ui-container");
 
   let startButton = document.getElementById("start-game");
-  // let htpButton = document.getElementById("instructions");
-  // let aboutButton = document.getElementById("about-game");
+
+  let volumeButton = document.getElementById("volume-button")
+  let audioPlayer = document.getElementById("background-audio")
 
   startButton.addEventListener("click", (e) => {
     mainMenu.style.visibility = "hidden";
@@ -22,6 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.style.visibility = "visible";
     gameView.start();
   });
+
+  volumeButton.addEventListener("click", (e) => {
+    audioPlayer.volume = 0.2;
+    
+    if(audioPlayer.muted) {
+      volumeButton.classList.remove("fa-volume-mute")
+      volumeButton.classList.add("fa-volume-up")
+      audioPlayer.muted = false;
+    } else {
+      volumeButton.classList.remove("fa-volume-up")
+      volumeButton.classList.add("fa-volume-mute")
+      audioPlayer.muted = true;
+    }
+  })
 
   document.addEventListener("keydown", (e) => {
     if(e.key === "r" && gameView.gameOver) {
