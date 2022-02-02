@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let startButton = document.getElementById("start-game");
 
-  let volumeButton = document.getElementById("volume-button")
-  let audioPlayer = document.getElementById("background-audio")
+  let volumeButton = document.getElementById("volume-button");
+  let audioPlayer = document.getElementById("background-audio");
 
   startButton.addEventListener("click", (e) => {
     mainMenu.style.visibility = "hidden";
@@ -26,22 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   volumeButton.addEventListener("click", (e) => {
     audioPlayer.volume = 0.2;
-    
-    if(audioPlayer.muted) {
-      volumeButton.classList.remove("fa-volume-mute")
-      volumeButton.classList.add("fa-volume-up")
+
+    if (audioPlayer.muted) {
+      volumeButton.classList.remove("fa-volume-mute");
+      volumeButton.classList.add("fa-volume-up");
       audioPlayer.muted = false;
     } else {
-      volumeButton.classList.remove("fa-volume-up")
-      volumeButton.classList.add("fa-volume-mute")
+      volumeButton.classList.remove("fa-volume-up");
+      volumeButton.classList.add("fa-volume-mute");
       audioPlayer.muted = true;
     }
-  })
+  });
 
   document.addEventListener("keydown", (e) => {
-    if(e.key === "r" && gameView.gameOver) {
-      gameView = new GameView(ctx)
+    if (e.key === "r" && gameView.gameOver) {
+      gameView = new GameView(ctx);
       gameView.start();
     }
-  })
+  });
 });
